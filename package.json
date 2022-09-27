@@ -1,0 +1,16 @@
+{
+  "name": "webpack5",
+  "version": "1.0.0",
+  "description": "Webpack is a static module bundler for modern JavaScript applications.  \r When Webpack processes our application, it recursively builds a dependency graph  \r that includes every module in our application and then packages all of those  \r modules into one or more bundles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
