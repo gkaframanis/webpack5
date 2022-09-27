@@ -14,3 +14,9 @@ modules into one or more bundles.
 
 - webpack: contains the core functionality of webpack
 - webpack-cli: command line tool, used to run webpack from the terminal.
+
+When using webpack we only need on JS file that will include all our code in html.
+- We import and export based on ECMAScript modules
+- We run webpack: ***npx webpack*** (uses the default conf, unless we provide a custom one)
+- ***npx webpack --stats detailed*** ==> tells webpack to print more details about the build process
+
