@@ -53,3 +53,21 @@ We can import JS or JSON files without specifying additional rules.
 Allow you to import all other kinds of files that you can't handle using Asset Modules.
 
 ### CSS
+
+- The ***css-loader*** reads the contents of the CSS file and returns the contents, but it doesn't do anything else.
+- The ***style-loader*** takes the CSS and injects to the page using style tags. It bundles our CSS together with our JS into a single bundle file.
+- We can also generate them as separate them as separate files.
+- ***npm install css-loader style-loader --save-dev***
+
+### SASS
+
+***npm i sass-loader sass --save-dev***
+
+### Javascript files
+To use the new ECMA features right away and not to wait till the browsers support them. There are tools that convert modern JS to older that is supported by the browsers.
+
+#### Babel
+
+***npm i babel @babel/core babel-loader @babel/preset-env --save-dev***
+
+## Plugins

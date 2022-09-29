@@ -30,6 +30,37 @@ module.exports = {
             {
                 test: /\.txt/,
                 type: 'asset/source'
+            },
+            // For css
+            {
+                test: /\.css$/,
+                use: [
+                    // We can combine multiple loaders
+                    'style-loader', 'css-loader'
+                ]
+            },
+            // For sass / scss
+            {
+                test: /\.scss$/,
+                use: [
+                    // We can combine multiple loaders
+                    // Webpack processes loaders from right to left!
+                    // sass ==> css ==> js ==> style to html
+                    'style-loader', 'css-loader', 'sass-loader'
+                ]
+            },
+            // For babel
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        // preset ECMAScript 6,7,8,9,10... down to 5
+                        // We can install any plugins we want with the features we want to use and they are not supported yet.
+                        presets: ['@babel/env'],
+                    }
+                }
             }
         ]
     }
