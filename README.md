@@ -1,5 +1,7 @@
 # Webpack 5
 
+## Introduction && Initial Setup
+
 Webpack is a static module bundler for modern JavaScript applications.  
 When Webpack processes our application, it recursively builds a dependency graph  
 that includes every module in our application and then packages all of those  
@@ -20,3 +22,34 @@ When using webpack we only need on JS file that will include all our code in htm
 - We run webpack: ***npx webpack*** (uses the default conf, unless we provide a custom one)
 - ***npx webpack --stats detailed*** ==> tells webpack to print more details about the build process
 
+## Asset Modules
+
+Webpack allows you to import lots of different stuff into your JS code.
+It's possible due to a couple of great features that Webpack provides:
+1. Asset modules
+2. Loaders
+
+Asset Modules allows you to easily use asset files in your JS code without
+installing additional dependencies.
+- images
+- fonts
+- text files
+
+4 Types of Asset Modules: 
+1. asset/resource (file into the output directory (large images, large font types))
+   Instructs webpack to copy it to the output directory.
+   Creates a separate file for every image we are using. Separate HTTP request for each image we need to display.
+   By default webpack5 sets publicPath to 'auto'.
+2. asset/inline (for SVG, injected, asset in line in bundle as data URI)
+   It generates a base 64 representation of our file and bake it directly into the JS bundle. For small asset files mainly.
+3. asset (combination of the previous two, webpack automatically chooses < 8kb inline else resource) ==> general asset type
+   To change the 8kb ==> parser: {dataUrlCondition: {maxSize: 3 * 1024}}
+4. asset/source ==> reads the contents of the file into a JS string and injects that string directly into the JS bundle as is without any modifications similarly to asset in line. It doesn't generate any file in the output directory.
+
+We can import JS or JSON files without specifying additional rules.
+
+## Loaders
+
+Allow you to import all other kinds of files that you can't handle using Asset Modules.
+
+### CSS

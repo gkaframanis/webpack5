@@ -1,4 +1,7 @@
 // ECMAScript modules
-import helloWorld from "./hello-world";
+import HelloWorldButton from "./components/HelloWorldButton/HelloWorldButton.js";
+import addImage from "./add-image";
 
-helloWorld();
+const helloWorldButton = new HelloWorldButton();
+helloWorldButton.render();
+addImage();
