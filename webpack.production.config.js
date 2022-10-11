@@ -35,26 +35,6 @@ module.exports = {
                 test: /\.txt/,
                 type: 'asset/source'
             },
-            // For css -- not in a separate file
-            // {
-            //     test: /\.css$/,
-            //     use: [
-                    // We can combine multiple loaders
-            //         'style-loader', 'css-loader'
-            //     ]
-            // },
-            
-            // For sass / scss -- not in a separate file
-            // {
-            //     test: /\.scss$/,
-            //     use: [
-                    // We can combine multiple loaders
-                    // Webpack processes loaders from right to left!
-                    // sass ==> css ==> js ==> style to html
-            //         'style-loader', 'css-loader', 'sass-loader'
-            //     ]
-            // },
-
             // For css -- in a separate file
             {
                 test: /\.css$/,

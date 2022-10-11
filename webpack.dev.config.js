@@ -21,6 +21,16 @@ module.exports = {
     },
     mode: 'development',
     // We need to tell webpack how to import image files, we need to give rules.
+    devServer: {
+        port: 9000,
+        static: {
+            directory: path.resolve(__dirname, './dist'),
+        },
+        devMiddleware: {
+            index: 'index.html',
+            writeToDisk: true
+        }
+    },
     module: {
         rules: [
             {

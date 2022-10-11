@@ -121,4 +121,6 @@ Handlebars is a template engine for JS that allows you to separate the business 
 - ***mode*** option
   - ***none*** ==> no built-in optimizations
   - ***development***
+    - webpack dev server package ==> ***npm i webpack-dev-server --save-dev***
+    - To get the changes in the browser without running webpack manually.
   - ***production*** ==> enables a long list of different plugins, including TerserPlugin.
