@@ -115,3 +115,10 @@ Handlebars is a template engine for JS that allows you to separate the business 
 
 - ***npm i --save-dev handlebars-loader***
 - ***npm i --save-dev handlebars***
+
+## Production vs Development Builds
+
+- ***mode*** option
+  - ***none*** ==> no built-in optimizations
+  - ***development***
+  - ***production*** ==> enables a long list of different plugins, including TerserPlugin.

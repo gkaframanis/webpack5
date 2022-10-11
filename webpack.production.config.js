@@ -1,6 +1,5 @@
 // We can't use ECMAScript modules in here.
 const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -15,13 +14,8 @@ module.exports = {
         // the output path
         path: path.resolve(__dirname, './dist'),
         publicPath: '',
-        // clean: true // to empty the output path after every build.
-        // clean: {
-        //     dry: true,
-        //     keep: /\.css/
-        // }
     },
-    mode: 'none',
+    mode: 'production',
     // We need to tell webpack how to import image files, we need to give rules.
     module: {
         rules: [
@@ -101,8 +95,6 @@ module.exports = {
         ]
     },
     plugins: [
-        // to minimize the bundle.js file
-        new TerserPlugin(),
         // to separate the CSS for the bundle.js file to a separate file
         new MiniCssExtractPlugin({
             filename: 'styles.[contenthash].css',
