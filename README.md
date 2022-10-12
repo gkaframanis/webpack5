@@ -124,3 +124,13 @@ Handlebars is a template engine for JS that allows you to separate the business 
     - webpack dev server package ==> ***npm i webpack-dev-server --save-dev***
     - To get the changes in the browser without running webpack manually.
   - ***production*** ==> enables a long list of different plugins, including TerserPlugin.
+
+## Multiple Page Applications
+We have two different JS files that represent two different entry points.  
+We want webpack two create two separate JS bundles out of those two files.
+
+- We change the entry inside the webpack file.
+
+### Extracting common dependencies
+Eg. use of lodash library in both pages.
+- Webpack has a built-in feature that can extract lodash and any other common dependency into its own bundle, so we don't have to re-download it every time there is a change to our pages.

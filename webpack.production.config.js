@@ -6,16 +6,27 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     // starting the building process
-    entry: "./src/index.js",
+    entry: {
+        'helloWorld': './src/helloWorld.js',
+        'kiwi': './src/kiwi.js'
+    },
     output: {
-        // the name of generated file
-        filename: "bundle.[contenthash].js",
+        // the name of generated file | [name] is the name we use in the entry
+        filename: "[name].[contenthash].js",
         // the directory inside which the file will be generated (absolute path)
         // the output path
         path: path.resolve(__dirname, './dist'),
         publicPath: '',
     },
     mode: 'production',
+    // For common dependencies to be in their own bundle
+    // eg lodash (the bundle that starts with numbers)
+    // The script with the bundle is included only where it's needed.
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     // We need to tell webpack how to import image files, we need to give rules.
     module: {
         rules: [
@@ -77,13 +88,29 @@ module.exports = {
     plugins: [
         // to separate the CSS for the bundle.js file to a separate file
         new MiniCssExtractPlugin({
-            filename: 'styles.[contenthash].css',
+            filename: '[name].[contenthash].css',
         }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
+            filename: 'helloWorld.html',
+            // specified at the entry point
+            chunks: ['helloWorld'],
             title: 'Hello world',
-            template: 'src/index.hbs',
-            description: "Some description"
+            template: 'src/pageTemplate.hbs',
+            description: "Hello World",
+            minify: true // by default is true
+            // meta: {
+            //     description: "Some description"
+            // }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'kiwi.html',
+            // specified at the entry point
+            chunks: ['kiwi'],
+            title: 'Kiwi',
+            template: 'src/pageTemplate.hbs',
+            description: "Kiwi",
+            minify: false // by default is true
             // meta: {
             //     description: "Some description"
             // }

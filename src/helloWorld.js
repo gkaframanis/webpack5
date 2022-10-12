@@ -1,13 +1,12 @@
 // ECMAScript modules
 import HelloWorldButton from "./components/HelloWorldButton";
 import Heading from "./components/Heading";
-import addImage from "./add-image";
+import _ from 'lodash';
 
 const helloWorldButton = new HelloWorldButton();
 const heading = new Heading();
-heading.render();
+heading.render(_.upperFirst("hello world"));
 helloWorldButton.render();
-addImage();
 
 if (process.env.NODE_ENV === 'production') {
     console.log("Production mode");
