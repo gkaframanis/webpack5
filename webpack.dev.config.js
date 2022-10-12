@@ -5,10 +5,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     // starting the building process
-    entry: "./src/index.js",
+    entry: {
+        'helloWorld': './src/helloWorld.js',
+        "kiwi": './src/kiwi.js'
+    },
     output: {
         // the name of generated file
-        filename: "bundle.js",
+        filename: "[name].bundle.js",
         // the directory inside which the file will be generated (absolute path)
         // the output path
         path: path.resolve(__dirname, './dist'),
@@ -93,9 +96,21 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
+            filename: 'helloWorld.html',
+            chunks: ['helloWorld'], // from entry point configuration
             title: 'Hello world',
-            template: 'src/index.hbs',
-            description: "Some description"
+            template: 'src/pageTemplate.hbs',
+            description: "Hello world"
+            // meta: {
+            //     description: "Some description"
+            // }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'kiwi.html',
+            chunks: ['kiwi'],
+            title: 'Kiwi',
+            template: 'src/pageTemplate.hbs',
+            description: "Kiwi"
             // meta: {
             //     description: "Some description"
             // }

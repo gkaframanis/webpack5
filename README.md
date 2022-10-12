@@ -134,3 +134,5 @@ We want webpack two create two separate JS bundles out of those two files.
 ### Extracting common dependencies
 Eg. use of lodash library in both pages.
 - Webpack has a built-in feature that can extract lodash and any other common dependency into its own bundle, so we don't have to re-download it every time there is a change to our pages.
+- ***npm i react --save***
+- By default webpack extracts common dependencies only when they exceed 30 kb before minification. That's way react isn't extracted to a separate bundle. We can change the 30kb number.

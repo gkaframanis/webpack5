@@ -1,11 +1,11 @@
 // 2nd different page that renders only the kiwi image.
 import Heading from "./components/Heading";
 import KiwiImage from "./components/KiwiImage";
-import _ from "lodash";
+import React from 'react';
 
 const heading = new Heading();
-const kiwiImage = new KiwiImage(_.upperFirst("kiwi"));
-heading.render();
+const kiwiImage = new KiwiImage("kiwi");
+heading.render('kiwi');
 kiwiImage.render();
 
 if (process.env.NODE_ENV === 'production') {

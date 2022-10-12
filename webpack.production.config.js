@@ -24,7 +24,9 @@ module.exports = {
     // The script with the bundle is included only where it's needed.
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
+            // At what size to extract common dependencies.
+            minSize: 3000 // 3kb
         }
     },
     // We need to tell webpack how to import image files, we need to give rules.
