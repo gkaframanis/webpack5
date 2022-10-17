@@ -2,20 +2,19 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+
 
 module.exports = {
     // starting the building process
-    entry: {
-        'helloWorld': './src/helloWorld.js',
-        "kiwi": './src/kiwi.js'
-    },
+    entry: './src/helloWorld.js',
     output: {
         // the name of generated file
         filename: "[name].bundle.js",
         // the directory inside which the file will be generated (absolute path)
         // the output path
         path: path.resolve(__dirname, './dist'),
-        publicPath: '',
+        publicPath: 'http://localhost:9001/',
         // clean: true // to empty the output path after every build.
         // clean: {
         //     dry: true,
@@ -25,42 +24,17 @@ module.exports = {
     mode: 'development',
     // We need to tell webpack how to import image files, we need to give rules.
     devServer: {
-        port: 9000,
+        port: 9001,
         static: {
             directory: path.resolve(__dirname, './dist'),
         },
         devMiddleware: {
-            index: 'index.html',
+            index: 'helloWorld.html',
             writeToDisk: true
         }
     },
     module: {
-        rules: [
-            {
-                test: /\.(png|jpg)$/,
-                // The 2nd property is either type or use
-                type: 'asset/resource'
-                // type: 'asset/inline'
-                // type: 'asset',
-                // parser: {
-                //     dataUrlCondition: {
-                //         maxSize: 3 * 1024 // 3 kb
-                //     }
-                // }
-            },
-            {
-                test: /\.txt/,
-                type: 'asset/source'
-            },
-            // For css -- not in a separate file
-            {
-                test: /\.css$/,
-                use: [
-                    // We can combine multiple loaders
-                    'style-loader', 'css-loader'
-                ]
-            },
-            
+        rules: [      
             // For sass / scss -- not in a separate file
             {
                 test: /\.scss$/,
@@ -97,23 +71,16 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'helloWorld.html',
-            chunks: ['helloWorld'], // from entry point configuration
             title: 'Hello world',
             template: 'src/pageTemplate.hbs',
             description: "Hello world"
-            // meta: {
-            //     description: "Some description"
-            // }
         }),
-        new HtmlWebpackPlugin({
-            filename: 'kiwi.html',
-            chunks: ['kiwi'],
-            title: 'Kiwi',
-            template: 'src/pageTemplate.hbs',
-            description: "Kiwi"
-            // meta: {
-            //     description: "Some description"
-            // }
-        })
+        new ModuleFederationPlugin({
+			name: 'HelloWorldApp',
+			filename: 'remoteEntry.js',
+			exposes: {
+				'./HelloWorldButton': './src/components/HelloWorldButton/HelloWorldButton.js',
+			},
+		}),
     ]
 };

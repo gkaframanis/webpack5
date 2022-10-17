@@ -3,20 +3,18 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
     // starting the building process
-    entry: {
-        'helloWorld': './src/helloWorld.js',
-        'kiwi': './src/kiwi.js'
-    },
+    entry: './src/helloWorld.js',
     output: {
         // the name of generated file | [name] is the name we use in the entry
         filename: "[name].[contenthash].js",
         // the directory inside which the file will be generated (absolute path)
         // the output path
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/static/',
+        publicPath: 'http://localhost:9001/',
     },
     mode: 'production',
     // For common dependencies to be in their own bundle
@@ -32,30 +30,6 @@ module.exports = {
     // We need to tell webpack how to import image files, we need to give rules.
     module: {
         rules: [
-            {
-                test: /\.(png|jpg)$/,
-                // The 2nd property is either type or use
-                type: 'asset/resource'
-                // type: 'asset/inline'
-                // type: 'asset',
-                // parser: {
-                //     dataUrlCondition: {
-                //         maxSize: 3 * 1024 // 3 kb
-                //     }
-                // }
-            },
-            {
-                test: /\.txt/,
-                type: 'asset/source'
-            },
-            // For css -- in a separate file
-            {
-                test: /\.css$/,
-                use: [
-                    // We can combine multiple loaders
-                    MiniCssExtractPlugin.loader, 'css-loader'
-                ]
-            },
             // For sass / scss -- in a separate file
             {
                 test: /\.scss$/,
@@ -95,27 +69,16 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'helloWorld.html',
-            // specified at the entry point
-            chunks: ['helloWorld'],
             title: 'Hello world',
             template: 'src/pageTemplate.hbs',
-            description: "Hello World",
-            minify: true // by default is true
-            // meta: {
-            //     description: "Some description"
-            // }
+            description: "Hello World"
         }),
-        new HtmlWebpackPlugin({
-            filename: 'kiwi.html',
-            // specified at the entry point
-            chunks: ['kiwi'],
-            title: 'Kiwi',
-            template: 'src/pageTemplate.hbs',
-            description: "Kiwi",
-            minify: false // by default is true
-            // meta: {
-            //     description: "Some description"
-            // }
-        })
+        new ModuleFederationPlugin({
+			name: 'HelloWorldApp',
+			filename: 'remoteEntry.js',
+			exposes: {
+				'./HelloWorldButton': './src/components/HelloWorldButton/HelloWorldButton.js',
+			},
+		}),
     ]
 };

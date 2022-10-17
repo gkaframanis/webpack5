@@ -150,3 +150,13 @@ Eg. use of lodash library in both pages.
 
 #### Handling JS and CSS with express.
 Set publicPath to static.
+
+## Two separate application (helloWorld and kiwi)
+- We will have two different boards for each one of them, so different dev ports.
+
+### Module federation
+- Introduced in Webpack v5.
+- Allows one application to dynamically load modules from another application
+- So two applications can share code between each other at runtime.
+
+## Microfrontends
