@@ -16,7 +16,7 @@ module.exports = {
         // the directory inside which the file will be generated (absolute path)
         // the output path
         path: path.resolve(__dirname, './dist'),
-        publicPath: '',
+        publicPath: '/static/',
     },
     mode: 'production',
     // For common dependencies to be in their own bundle

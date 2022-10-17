@@ -136,3 +136,17 @@ Eg. use of lodash library in both pages.
 - Webpack has a built-in feature that can extract lodash and any other common dependency into its own bundle, so we don't have to re-download it every time there is a change to our pages.
 - ***npm i react --save***
 - By default webpack extracts common dependencies only when they exceed 30 kb before minification. That's way react isn't extracted to a separate bundle. We can change the 30kb number.
+
+## Integrating Express into our application
+
+### For Single Page Application.
+- Created the ***server.js*** file.
+- ***npm i express --save***
+- Add script to package.json
+
+### Serving HTML pages via express
+- We need to read the contents of the HTML file into a JS variable and then send this JS string to the browser.
+- index.js file, webpack.single.config.js file and single-build script.
+
+#### Handling JS and CSS with express.
+Set publicPath to static.

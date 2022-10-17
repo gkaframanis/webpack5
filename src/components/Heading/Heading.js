@@ -1,4 +1,4 @@
-import './Heading.css';
+import './Heading.scss';
 
 class Heading {
     render(pageName) {
