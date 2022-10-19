@@ -8,6 +8,12 @@ class KiwiPage {
         const kiwiImage = new KiwiImage("kiwi");
         heading.render('kiwi');
         kiwiImage.render();
+
+        import('ImageCaptionApp/ImageCaption').then(ImageCaptionModule => {
+            const ImageCaption = ImageCaptionModule.default;
+            const imageCaption = new ImageCaption();
+            imageCaption.render("Kiwifruit is oval, about the size of a large egg");
+        })
     }
 }
 

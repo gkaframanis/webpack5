@@ -165,3 +165,11 @@ Set publicPath to static.
 - ***npm i webpack webpack-cli webpack-dev-server mini-css-extract-plugin html-webpack-plugin clean-webpack-plugin babel-loader @babel/core @babel/preset-env --save-dev***
 - ***npm i express --save***
 - ***npm install style-loader css-loader sass-loader sass --save-dev***
+
+### Instructions:
+- ***npm i*** in each module by getting inside each folder.
+- ***npm run build*** for each module inside each folder.
+- ***npm run start*** for each one of them in different terminals in their own folders.
+
+## Nested Module Federation
+- ***git checkout feature/nested-module-federation***
