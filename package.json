@@ -8,19 +8,22 @@
         "build": "webpack --config webpack.production.config.js",
         "dev": "webpack serve --config webpack.dev.config.js --hot",
         "start": "node src/server.js",
-        "single-build": "webpack --config webpack.single.production.config.js"
+        "single-build": "webpack --config webpack.single.production.config.js",
+        "lint": "eslint ."
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "@babel/core": "^7.19.3",
+        "@babel/eslint-parser": "^7.19.1",
         "@babel/plugin-proposal-class-properties": "^7.18.6",
         "@babel/preset-env": "^7.19.3",
         "babel": "^6.23.0",
         "babel-loader": "^8.2.5",
         "clean-webpack-plugin": "^4.0.0",
         "css-loader": "^6.7.1",
+        "eslint": "^8.25.0",
         "handlebars": "^4.7.7",
         "handlebars-loader": "^1.7.2",
         "html-webpack-plugin": "^5.5.0",

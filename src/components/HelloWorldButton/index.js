@@ -1,3 +1,3 @@
-import HelloWorldButton from "./HelloWorldButton";
+import HelloWorldButton from './HelloWorldButton';
 
 export default HelloWorldButton;
