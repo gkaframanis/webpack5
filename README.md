@@ -164,3 +164,4 @@ Set publicPath to static.
 - ***git checkout feature/microfrontends***
 - ***npm i webpack webpack-cli webpack-dev-server mini-css-extract-plugin html-webpack-plugin clean-webpack-plugin babel-loader @babel/core @babel/preset-env --save-dev***
 - ***npm i express --save***
+- ***npm install style-loader css-loader sass-loader sass --save-dev***

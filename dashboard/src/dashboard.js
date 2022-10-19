@@ -1,3 +1,19 @@
+import NavigationBar from './components/NavigationBar';
+
+const navigationItems = [
+    {
+        url: '/hello-world-page',
+        title: 'Hello World Page'
+    },
+    {
+        url: '/kiwi-page',
+        title: 'Kiwi Page'
+    }
+];
+
+const navigationBar = new NavigationBar();
+navigationBar.render(navigationItems);
+
 // We are going to render these component pages based on the url the user entered to the browser. (without domain & port)
 const url = window.location.pathname;
 
