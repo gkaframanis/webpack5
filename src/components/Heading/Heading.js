@@ -1,11 +1,13 @@
 import './Heading.scss';
+import $ from 'jquery';
 
+// We use jquery instead of vanilla JS for the heading. 
 class Heading {
     render(pageName) {
-        const h1 = document.createElement('h1');
-		const body = document.querySelector('body');
-		h1.innerHTML = 'Webpack is awesome. This "' + pageName + '" page"';
-		body.appendChild(h1);
+        const h1 = $('<h1>');
+		const body = $('body');
+		h1.text('Webpack is awesome. This "' + pageName + '" page"');
+		body.append(h1);
     }
 }
 

@@ -150,3 +150,29 @@ Eg. use of lodash library in both pages.
 
 #### Handling JS and CSS with express.
 Set publicPath to static.
+
+## Two separate application (helloWorld and kiwi)
+- We will have two different boards for each one of them, so different dev ports.
+
+### Module federation
+- Introduced in Webpack v5.
+- Allows one application to dynamically load modules from another application
+- So two applications can share code between each other at runtime.
+- ***git checkout feature/split-into-two-applications***
+
+## Microfrontends
+- ***git checkout feature/microfrontends***
+- ***npm i webpack webpack-cli webpack-dev-server mini-css-extract-plugin html-webpack-plugin clean-webpack-plugin babel-loader @babel/core @babel/preset-env --save-dev***
+- ***npm i express --save***
+- ***npm install style-loader css-loader sass-loader sass --save-dev***
+
+### Instructions:
+- ***npm i*** in each module by getting inside each folder.
+- ***npm run build*** for each module inside each folder.
+- ***npm run start*** for each one of them in different terminals in their own folders.
+
+## Nested Module Federation
+- ***git checkout feature/nested-module-federation***
+
+## Integration with jQuery
+- ***npm i jquery --save***

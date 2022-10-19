@@ -1,7 +1,6 @@
 // 2nd different page that renders only the kiwi image.
 import Heading from "./components/Heading";
 import KiwiImage from "./components/KiwiImage";
-import React from 'react';
 
 const heading = new Heading();
 const kiwiImage = new KiwiImage("kiwi");
