@@ -15,7 +15,7 @@ module.exports = {
         // the directory inside which the file will be generated (absolute path)
         // the output path
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/static/',
+        publicPath: 'http://localhost:9002/',
     },
     mode: 'production',
     // For common dependencies to be in their own bundle
@@ -88,10 +88,10 @@ module.exports = {
         }),
         new ModuleFederationPlugin({
 			name: 'KiwiApp',
-			remotes: {
-				// remoteEntry.js is the filename we used in the exposes of the ModuleFederationPlugin in the HelloWorldApp webpack.dev.config.js.
-				HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js'
-			},
+            filename: 'remoteEntry.js',
+			exposes: {
+				'./KiwiPage': './src/components/KiwiPage/KiwiPage.js'
+			}
 		}),
     ]
 };
